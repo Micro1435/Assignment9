@@ -7,9 +7,33 @@
 //
 
 #include <iostream>
+#include "AppleFarmer.h"
 
-int main(int argc, const char * argv[]) {
-    // insert code here...
-    std::cout << "Hello, World!\n";
-    return 0;
+using namespace std;
+
+
+int main() {
+    AppleFarmer apples(0);
+    
+    int dayHarvest;
+    int demand;
+    
+    while (apples.endOfMonth() == false) {
+
+        cout << "Enter a harvest amount: " << endl;
+        cin >> dayHarvest;
+        apples.harvestApples(dayHarvest);
+        
+        cout << "Enter a sales amount: " << endl;
+        cin >> demand;
+        apples.sellApples(demand);
+        
+        cout << "Apple inventory: " << apples.getInventory() << endl;
+        apples.updateCurrentDay();
+    }
+    
+    cout << "Average harvest: " << apples.calculateAverageHarvest() << endl;
+    cout << "Average sales: " << apples.calculateAverageSales() << endl;
+    
 }
+
